@@ -10,6 +10,7 @@ function WeatherMain({
 }) {
   return (
     <div>
+      <button className="like">Favorite this Location</button>
       <main className="main">
         <div className="title">
           <div className="title-minor">

@@ -1,6 +1,6 @@
 import React from "react";
 
-function UserInput({ userInput, setUserInput, submitHandler }) {
+function UserInput({ userInput, setUserInput, submitHandler, errorMessage }) {
   const inputListener = function (e) {
     let input = e.target.value;
 
@@ -9,10 +9,15 @@ function UserInput({ userInput, setUserInput, submitHandler }) {
 
   return (
     <div>
-      <li className="nav-link">Search</li>
-      <form onChange={inputListener} action="">
-        <input placeholder="Search a location" type="text" />
+      <form action="">
+        <input
+          value={userInput}
+          onChange={inputListener}
+          placeholder="Search a location"
+          type="text"
+        />
         <button onClick={submitHandler}>Submit</button>
+        {errorMessage && <p>{errorMessage.message}</p>}
       </form>
     </div>
   );

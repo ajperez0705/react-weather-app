@@ -4,10 +4,16 @@ import "./main.css";
 import { useState, useEffect } from "react";
 import UserInput from "./components/UserInput";
 import searchFetch from "./helpers/search-fetch";
+import Modal from "./components/Modal";
+import SavedLocations from "./components/SavedLocations";
+import SavedListProvider from "./store/SavedListProvider";
+import SavedListButton from "./components/SavedListButton";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [userInput, setUserInput] = useState("");
+  const [error, setError] = useState("");
+  const [savedListIsShown, setSavedListIsShown] = useState(false);
 
   async function fetchWeather2(currentPosition) {
     try {
@@ -81,7 +87,12 @@ function App() {
   const onSubmitHandler = async function (e) {
     e.preventDefault();
 
-    if (userInput.length === 0 || userInput.length < 3) return;
+    if (userInput.length === 0 || userInput.length < 3) {
+      errorHandler();
+      return;
+    }
+
+    setError("");
     setCurrentWeather({});
 
     const data = await searchFetch(userInput);
@@ -98,19 +109,37 @@ function App() {
     setUserInput("");
   };
 
+  const errorHandler = function () {
+    setError({
+      title: "jioewjfiowesj",
+      message: "hrfgiorwegf",
+    });
+    return;
+  };
+
+  // Saved Location Controls
+  const showListHandler = () => {
+    setSavedListIsShown(true);
+  };
+
+  const hideListHandler = () => {
+    setSavedListIsShown(false);
+  };
+
   return (
-    <div className="App">
+    <SavedListProvider>
+      {savedListIsShown && <SavedLocations onHideHandler={hideListHandler} />}
       <div className="app-wrapper">
         <div className="nav-bar">
-          <ul className="nav-links">
-            <li className="nav-link">Favorite</li>
-            <li className="nav-link">List</li>
+          <div className="nav-links">
+            <SavedListButton showListHandler={showListHandler} />
             <UserInput
+              errorMessage={error}
               userInput={userInput}
               setUserInput={setUserInput}
               submitHandler={onSubmitHandler}
             />
-          </ul>
+          </div>
         </div>
         <WeatherMain
           region={currentWeather.region}
@@ -122,7 +151,7 @@ function App() {
         />
         <button onClick={setWeather}>set weather</button>
       </div>
-    </div>
+    </SavedListProvider>
   );
 }
 

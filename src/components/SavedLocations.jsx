@@ -12,7 +12,6 @@ function SavedLocations({ onHideHandler, onFetchSavedHandler }) {
     savedListCtx.removeLocation(id);
   };
 
-  // Dummy Saved List
   const savedLocations = (
     <ul>
       {savedListCtx.locations.map((savedLocation) => (

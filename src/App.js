@@ -143,6 +143,17 @@ function App() {
     setSavedListIsShown(false);
   };
 
+  const backgroundSetter = function (temperature) {
+    let background;
+    if (temperature > 85) {
+      return (background = "main warm-background");
+    } else if (temperature < 85 && temperature > 50) {
+      return (background = "main fair-background");
+    } else if (temperature < 49) {
+      return (background = "main cold-background");
+    } else return (background = "main");
+  };
+
   return (
     <SavedListProvider>
       {savedListIsShown && (
@@ -170,6 +181,7 @@ function App() {
           detailOne={currentWeather.detailOne}
           detailTwo={currentWeather.detailTwo}
           detailThree={currentWeather.detailThree}
+          background={backgroundSetter}
         />
         <button onClick={setWeather}>set weather</button>
       </div>

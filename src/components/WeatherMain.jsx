@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import SavedListContext from "../store/saved-list-context";
-import searchFetch from "../helpers/search-fetch";
+import addToDb from "../helpers/post-db";
 
 const WeatherMain = ({
   region,
@@ -36,7 +36,7 @@ const WeatherMain = ({
       country: country,
     });
 
-    console.log(savedCtx.locations);
+    addToDb({ location: location, region: region, country: country });
   };
   /**************************** */
 

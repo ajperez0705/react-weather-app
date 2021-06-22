@@ -1,7 +1,7 @@
 import WeatherMain from "./components/WeatherMain";
 import "./main.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import UserInput from "./components/UserInput";
 import searchFetch from "./helpers/search-fetch";
 import Modal from "./components/Modal";
@@ -126,9 +126,31 @@ function App() {
     setSavedListIsShown(false);
   };
 
+  // Fetch Saved Data and render to weatherMain
+  const fetchSavedData = async function (location) {
+    if (currentWeather.location === location) return;
+
+    const data = await searchFetch(location);
+    setCurrentWeather({
+      region: data.location.region,
+      country: data.location.country,
+      location: data.location.name,
+      detailOne: data.current.feelslike_f,
+      detailTwo: data.current.gust_mph,
+      detailThree: data.current.uv,
+    });
+
+    setSavedListIsShown(false);
+  };
+
   return (
     <SavedListProvider>
-      {savedListIsShown && <SavedLocations onHideHandler={hideListHandler} />}
+      {savedListIsShown && (
+        <SavedLocations
+          onHideHandler={hideListHandler}
+          onFetchSavedHandler={fetchSavedData}
+        />
+      )}
       <div className="app-wrapper">
         <div className="nav-bar">
           <div className="nav-links">

@@ -1,36 +1,41 @@
 import React from "react";
 import Modal from "./Modal";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import SavedListContext from "../store/saved-list-context";
+import SavedLocation from "./SavedLocation";
 
-function SavedLocations({ onHideHandler }) {
+function SavedLocations({ onHideHandler, onFetchSavedHandler }) {
+  const savedListCtx = useContext(SavedListContext);
+  const hasItems = savedListCtx.locations.length > 0;
+
+  const removeLocationHandler = (id) => {
+    savedListCtx.removeLocation(id);
+  };
+
   // Dummy Saved List
-  const test_cart_items = (
+  const savedLocations = (
     <ul>
-      {[
-        { id: "1", region: "Tri-State", country: "USA", location: "Orlando" },
-        { id: "2", region: "Tri-State", country: "USA", location: "Atlanta" },
-      ].map((savedLocation) => (
-        <li key={savedLocation.id}>{savedLocation.location}</li>
+      {savedListCtx.locations.map((savedLocation) => (
+        <SavedLocation
+          key={savedLocation.id}
+          location={savedLocation.location}
+          region={savedLocation.region}
+          country={savedLocation.country}
+          onRemove={removeLocationHandler.bind(null, savedLocation.id)}
+          fetchSavedData={onFetchSavedHandler}
+        />
       ))}
     </ul>
   );
 
   // State Management
-  const [errorMessage, setErrorMessage] = useState({
-    message: "Cart is empty",
-  });
-  const [emptyCart, setEmptyCart] = useState(true);
-
-  const savedLocationError = function () {
-    setErrorMessage({
-      message: "no saved locations",
-    });
-  };
+  // const [errorMessage, setErrorMessage] = useState();
 
   return (
     <Modal>
-      {emptyCart && <div>{errorMessage.message}</div>}
-      {test_cart_items}
+      {/* {errorMessage && <div>{errorMessage.message}</div>} */}
+      {savedLocations}
+      {!hasItems && <p>No Locations</p>}
       <button onClick={onHideHandler} className="hide-modal">
         Hide
       </button>

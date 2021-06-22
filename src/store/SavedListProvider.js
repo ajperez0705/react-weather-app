@@ -6,13 +6,25 @@ const defaultSavedListState = {
 };
 
 const savedListReducer = (state, action) => {
+  // Adding a location
   if (action.type === "ADD_LOCATION") {
     const updatedLocations = state.locations.concat(action.location);
     return {
       locations: updatedLocations,
     };
   }
-  return defaultSavedListState;
+
+  // Removing a location
+  if (action.type === "REMOVE_LOCATION") {
+    let updatedLocations = state.locations.filter(
+      (location) => location.id !== action.id
+    );
+    return {
+      locations: updatedLocations,
+    };
+  }
+
+  // return defaultSavedListState;
 };
 
 const SavedListProvider = (props) => {

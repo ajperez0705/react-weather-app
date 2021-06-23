@@ -1,13 +1,14 @@
 import WeatherMain from "./components/WeatherMain";
-import "./main.css";
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import UserInput from "./components/UserInput";
 import searchFetch from "./helpers/search-fetch";
-import Modal from "./components/Modal";
 import SavedLocations from "./components/SavedLocations";
 import SavedListProvider from "./store/SavedListProvider";
 import SavedListButton from "./components/SavedListButton";
+
+// Styling
+import "./main.css";
+import "./App.css";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
@@ -31,6 +32,8 @@ function App() {
         }
       );
       const data = await response.json();
+      console.log(data);
+
       setCurrentWeather({
         region: data.location.region,
         country: data.location.country,
@@ -38,6 +41,7 @@ function App() {
         detailOne: data.current.feelslike_f,
         detailTwo: data.current.gust_mph,
         detailThree: data.current.uv,
+        detailFour: data.current.condition.text,
       });
     } catch (err) {
       console.log(err);
@@ -72,16 +76,11 @@ function App() {
         detailOne: data.current.feelslike_f,
         detailTwo: data.current.gust_mph,
         detailThree: data.current.uv,
+        detailFour: data.current.condition.text,
       });
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const setWeather = function (e) {
-    e.preventDefault();
-    fetchWeather();
-    console.log(currentWeather);
   };
 
   const onSubmitHandler = async function (e) {
@@ -104,6 +103,7 @@ function App() {
       detailOne: data.current.feelslike_f,
       detailTwo: data.current.gust_mph,
       detailThree: data.current.uv,
+      detailFour: data.current.condition.text,
     });
 
     setUserInput("");
@@ -138,6 +138,7 @@ function App() {
       detailOne: data.current.feelslike_f,
       detailTwo: data.current.gust_mph,
       detailThree: data.current.uv,
+      detailFour: data.current.condition.text,
     });
 
     setSavedListIsShown(false);
@@ -156,34 +157,39 @@ function App() {
 
   return (
     <SavedListProvider>
-      {savedListIsShown && (
-        <SavedLocations
-          onHideHandler={hideListHandler}
-          onFetchSavedHandler={fetchSavedData}
-        />
-      )}
-      <div className="app-wrapper">
-        <div className="nav-bar">
-          <div className="nav-links">
-            <SavedListButton showListHandler={showListHandler} />
-            <UserInput
-              errorMessage={error}
-              userInput={userInput}
-              setUserInput={setUserInput}
-              submitHandler={onSubmitHandler}
+      <div className="container">
+        <div className={backgroundSetter(currentWeather.detailOne)}>
+          {savedListIsShown && (
+            <SavedLocations
+              onHideHandler={hideListHandler}
+              onFetchSavedHandler={fetchSavedData}
             />
+          )}
+          <div className="app-overlay" />
+          <div className="nav-bar">
+            <div className="nav-links">
+              <SavedListButton
+                showListHandler={showListHandler}
+                savedListStatus={savedListIsShown}
+              />
+              <UserInput
+                errorMessage={error}
+                userInput={userInput}
+                setUserInput={setUserInput}
+                submitHandler={onSubmitHandler}
+              />
+            </div>
           </div>
+          <WeatherMain
+            region={currentWeather.region}
+            country={currentWeather.country}
+            location={currentWeather.location}
+            detailOne={currentWeather.detailOne}
+            detailTwo={currentWeather.detailTwo}
+            detailThree={currentWeather.detailThree}
+            detailFour={currentWeather.detailFour}
+          />
         </div>
-        <WeatherMain
-          region={currentWeather.region}
-          country={currentWeather.country}
-          location={currentWeather.location}
-          detailOne={currentWeather.detailOne}
-          detailTwo={currentWeather.detailTwo}
-          detailThree={currentWeather.detailThree}
-          background={backgroundSetter}
-        />
-        <button onClick={setWeather}>set weather</button>
       </div>
     </SavedListProvider>
   );

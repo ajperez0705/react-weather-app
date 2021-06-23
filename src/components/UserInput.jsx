@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 
 function UserInput({ userInput, setUserInput, submitHandler, errorMessage }) {
   const inputListener = function (e) {
@@ -9,14 +10,17 @@ function UserInput({ userInput, setUserInput, submitHandler, errorMessage }) {
 
   return (
     <div>
-      <form action="">
+      <form className="user-input" action="">
         <input
+          className="user-input-field"
           value={userInput}
           onChange={inputListener}
           placeholder="Search a location"
           type="text"
         />
-        <button onClick={submitHandler}>Submit</button>
+        <button className="search-btn" onClick={submitHandler}>
+          Submit
+        </button>
         {errorMessage && <p>{errorMessage.message}</p>}
       </form>
     </div>

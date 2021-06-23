@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import SavedListContext from "../store/saved-list-context";
+import "../App.css";
 
-function SavedListButton({ showListHandler }) {
+function SavedListButton({ showListHandler, savedListStatus }) {
   const listCTX = useContext(SavedListContext);
 
   //
@@ -9,10 +10,16 @@ function SavedListButton({ showListHandler }) {
 
   return (
     <div>
-      <button onClick={showListHandler} className="saved-locations">
-        <span>Saved Locations</span>
-        <span>{numberOfListItems}</span>
-      </button>
+      <div onClick={showListHandler} className="saved-locations">
+        {!savedListStatus && (
+          <span className="list-btn">
+            <i class="fas fa-bars"></i>
+          </span>
+        )}
+        {!savedListStatus && (
+          <span class="num-list-items">{numberOfListItems}</span>
+        )}
+      </div>
     </div>
   );
 }

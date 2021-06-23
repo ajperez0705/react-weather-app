@@ -20,6 +20,7 @@ function SavedLocations({ onHideHandler, onFetchSavedHandler }) {
           location={savedLocation.location}
           region={savedLocation.region}
           country={savedLocation.country}
+          temperature={savedLocation.detailOne}
           onRemove={removeLocationHandler.bind(null, savedLocation.id)}
           fetchSavedData={onFetchSavedHandler}
         />
@@ -34,7 +35,7 @@ function SavedLocations({ onHideHandler, onFetchSavedHandler }) {
     <Modal>
       {/* {errorMessage && <div>{errorMessage.message}</div>} */}
       {savedLocations}
-      {!hasItems && <p>No Locations</p>}
+      {!hasItems && <p className="modal-error-msg">No Locations</p>}
       <button onClick={onHideHandler} className="hide-modal">
         Hide
       </button>

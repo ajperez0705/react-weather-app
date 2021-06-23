@@ -10,7 +10,7 @@ const WeatherMain = ({
   detailOne,
   detailTwo,
   detailThree,
-  background,
+  detailFour,
 }) => {
   const savedCtx = useContext(SavedListContext);
   const locationId = Math.random().toString();
@@ -36,6 +36,7 @@ const WeatherMain = ({
       location: location,
       region: region,
       country: country,
+      temperature: detailOne,
     });
 
     addToDb({ location: location, region: region, country: country });
@@ -48,26 +49,25 @@ const WeatherMain = ({
 
   return (
     <div>
-      <button onClick={likeBtnHandler} className="like">
-        Favorite this Location
+      <button onClick={likeBtnHandler} className="like-btn">
+        <i class={likedState ? "fas fa-heart" : "far fa-heart"}></i>
       </button>
       {likedState && <p>You have already liked this location</p>}
-      <main id={locationId} className={background(Math.round(detailOne))}>
-        <div className="title">
-          <div className="title-minor">
-            <h6>{region}</h6>
-            <h6>{country}</h6>
-          </div>
-          <div className="title-major">
-            <h3>{location}</h3>
-          </div>
+      <div className="title">
+        <div className="title-minor">
+          <h6>{region},</h6>
+          <h6>{country}</h6>
         </div>
-        <div className="details">
-          <div className="detail detail-one">
-            Temperature: {Math.round(detailOne)}°F
-          </div>
+        <div className="title-major">
+          <h3>{location}</h3>
+        </div>
+      </div>
+      <main id={locationId}>
+        <div className="temperature">{Math.round(detailOne)}°F</div>
+        <div className="sub-details">
           <div className="detail detail-two">Wind: {detailTwo}</div>
           <div className="detail detail-three">UV: {detailThree}</div>
+          <div className="detail detail-three">Condition: {detailFour}</div>
         </div>
       </main>
     </div>

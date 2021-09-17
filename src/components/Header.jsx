@@ -53,6 +53,7 @@ function Header({
       location: currentWeather.location,
       region: currentWeather.region,
       country: currentWeather.country,
+      temperature: currentWeather.detailOne,
     });
     setLikedState(true);
   };

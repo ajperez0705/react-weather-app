@@ -20,7 +20,7 @@ function SavedLocations({ onHideHandler, onFetchSavedHandler }) {
           location={savedLocation.location}
           region={savedLocation.region}
           country={savedLocation.country}
-          temperature={savedLocation.detailOne}
+          temperature={savedLocation.temperature}
           onRemove={removeLocationHandler.bind(null, savedLocation.id)}
           fetchSavedData={onFetchSavedHandler}
         />

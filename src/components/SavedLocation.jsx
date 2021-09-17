@@ -11,10 +11,6 @@ function SavedLocation({
   onRemove,
   fetchSavedData,
 }) {
-  const curTemp = {
-    temperature: temperature,
-  };
-
   const fetchDataHandler = () => {
     fetchSavedData(location);
   };
@@ -32,7 +28,7 @@ function SavedLocation({
   };
 
   return (
-    <div className={` "location-card ${cardBackgroundSetter(curTemp)}"`}>
+    <div className={`location-card ${cardBackgroundSetter(temperature)}`}>
       <div className="saved-location-info">
         <h6>
           {region}, {country}

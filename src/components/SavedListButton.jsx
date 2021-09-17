@@ -13,7 +13,7 @@ function SavedListButton({ showListHandler, savedListStatus }) {
       <div onClick={showListHandler} className="saved-locations">
         {!savedListStatus && (
           <span className="list-btn">
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </span>
         )}
         {!savedListStatus && (

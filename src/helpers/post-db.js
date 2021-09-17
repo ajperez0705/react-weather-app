@@ -1,5 +1,3 @@
-import React from "react";
-
 export default async function addToDb(locationData) {
   try {
     const response = await fetch(
@@ -12,7 +10,7 @@ export default async function addToDb(locationData) {
         },
       }
     );
-    const data = response.json();
+    const data = await response.json();
     console.log(data);
   } catch (err) {
     console.log(err);

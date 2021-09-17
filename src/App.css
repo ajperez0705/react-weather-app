@@ -124,9 +124,9 @@
 .modal-container ul {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   max-height: 280px;
-  width: auto;
   overflow-y: scroll;
 }
 
@@ -158,9 +158,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 40px 60px;
+  margin: 8px 0;
   border-radius: 8px;
   width: auto;
-  max-width: 700px;
   height: auto;
   flex-wrap: wrap;
 }

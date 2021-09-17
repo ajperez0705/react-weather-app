@@ -118,6 +118,7 @@ function App() {
   };
 
   const backgroundSetter = function (temperature) {
+    console.log(temperature);
     let background;
     if (temperature > 85) {
       return (background = "main warm-background");

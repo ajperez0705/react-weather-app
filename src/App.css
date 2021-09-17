@@ -18,37 +18,35 @@
 }
 
 .container {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 80px;
 }
 
 .app-overlay {
   width: 100%;
   height: 100%;
   background: #000;
+  top: 0;
   opacity: 0.3;
   position: absolute;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  width: auto;
-  z-index: 5;
+  z-index: 0;
 }
 
 /* Navigation */
 
 .nav-bar {
-  position: absolute;
-  top: 3%;
-  right: 4.5%;
   text-align: right;
 }
 
 .saved-locations {
   margin-bottom: 24px;
-  border-radius: 24px;
+  border-radius: 8px;
   border: none;
   background-color: rgb(93, 252, 185);
   padding: 16px;
@@ -75,7 +73,7 @@
 }
 
 .user-input-field {
-  padding: 17px;
+  padding: 18px 16px 16px 16px;
   border: none;
   border-radius: 8px 0 0 8px;
   color: black;
@@ -107,15 +105,29 @@
 
 .modal-container {
   position: absolute;
-  height: auto;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   z-index: 30;
-  top: 40%;
-  left: 30%;
   text-align: center;
   background-color: rgb(248, 248, 248);
-  padding: 60px;
+  padding: 60px 60px 0 60px;
   border-radius: 8px;
+  height: auto;
+  min-height: 200px;
+  max-height: 450px;
+  width: 60%;
+}
+
+.modal-container ul {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-height: 280px;
   width: auto;
+  overflow-y: scroll;
 }
 
 .modal-error-msg {
@@ -145,17 +157,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(235, 219, 190);
   padding: 40px 60px;
   border-radius: 8px;
   width: auto;
+  max-width: 700px;
   height: auto;
   flex-wrap: wrap;
 }
 
 .saved-location-info {
   text-align: left;
-  padding-right: 100px;
 }
 
 .saved-location-info h3 {
@@ -201,4 +212,10 @@
 .saved-location-controls .remove-btn:hover {
   background-color: rgb(209, 85, 63);
   transition: 0.4s ease-in;
+}
+
+@media only screen and (max-width: 970px) {
+  .header {
+    padding: 24px 32px;
+  }
 }

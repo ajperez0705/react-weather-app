@@ -11,23 +11,28 @@ function SavedLocation({
   onRemove,
   fetchSavedData,
 }) {
+  const curTemp = {
+    temperature: temperature,
+  };
+
   const fetchDataHandler = () => {
     fetchSavedData(location);
   };
 
-  const backgroundSetter = function (temperature) {
+  const cardBackgroundSetter = function (temperature) {
+    console.log(temperature);
     let background;
     if (temperature > 85) {
-      return (background = "main warm-background");
+      return (background = "warm-background");
     } else if (temperature < 85 && temperature > 50) {
-      return (background = "main fair-background");
+      return (background = "fair-background");
     } else if (temperature < 49) {
-      return (background = "main cold-background");
+      return (background = "cold-background");
     } else return (background = "main");
   };
 
   return (
-    <div className="location-card">
+    <div className={` "location-card ${cardBackgroundSetter(curTemp)}"`}>
       <div className="saved-location-info">
         <h6>
           {region}, {country}

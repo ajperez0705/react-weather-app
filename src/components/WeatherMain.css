@@ -3,6 +3,12 @@
   text-align: center;
   transition: 1.2s ease-in;
   position: relative;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  height: 100vh;
+  width: auto;
+  z-index: 5;
 }
 
 main {
@@ -31,7 +37,6 @@ main {
 }
 
 .like-btn {
-  position: absolute;
   top: 17%;
   right: 4.5%;
   border-radius: 24px;
@@ -41,7 +46,7 @@ main {
   font-size: 16px;
   color: white;
   cursor: pointer;
-  margin: 8px;
+  margin: 16px 8px;
 }
 
 .like-btn:hover {
@@ -50,23 +55,20 @@ main {
 }
 
 .title-minor {
-  display: flex;
-  top: 5%;
-  left: 5%;
-  position: absolute;
   opacity: 0.7;
   font-size: 36px;
-}
-
-.title-minor h6 {
   padding-right: 8px;
+  text-align: left;
 }
 
-.title-major {
+.title-minor span:not(:last-child) {
+  padding-right: 16px;
+}
+
+.title-major h3 {
   font-size: 116px;
-  top: 8%;
-  left: 5%;
-  position: absolute;
+  text-align: left;
+
   z-index: 10;
 }
 
@@ -75,15 +77,33 @@ main {
   font-size: 220px;
 }
 
-.sub-details {
+.weather-details {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-end;
-  margin-top: 80px;
+  /* align-items: flex-end; */
+  margin-top: 300px;
   z-index: 5;
 }
 
 .detail {
   font-size: 40px;
+}
+
+@media only screen and (max-width: 970px) {
+  .title {
+    flex: 1;
+  }
+
+  .title-minor {
+    width: 60%;
+    font-size: 24px;
+  }
+  .title-major h3 {
+    font-size: 48px;
+  }
+
+  .nav-bar {
+    flex: 2;
+  }
 }

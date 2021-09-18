@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Summary
+The transition from using pure HTML, CSS, and JS, to JSX and React was a little difficult in the beginning due to syntax and and the way data was passed between components; however, this project really solidified my React fundamentals. Although admittedly simple and common for a project, I include it show my improvement as a developer and how I used it as a stepping stone for bigger things to come!  In addition, I chose to slightly differentiate it from the pack by implementing a dynamic weather background that changes based on the current temperature of either the users current location, or the chosen destination.
 
-## Available Scripts
+### Functionality
+1. On load, shows the user the weather of the user's current location using the Geolocator Navigation API.
+2. User can search for a city throughout the world and view the current weather there.
+3. User can save the location within a list.
+4. While the save list is open, the user can render the saved location, or remove it from the list.
 
-In the project directory, you can run:
+### What I Learned
+1. 1. Solidified React fundamentals (useState, useEffect) and Architecture. 
+2. How async functionality works with useEffect, and how API calls work in React. 
+3. JSX syntax and conditional logic
 
-### `npm start`
+### Built Using
+1. React
+2. CSS / SASS
+3. Geolocation Navigator and Sky Scanner APIs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Design Work and Inspiration
+Before touching code, I like to make use of a moodboard and design program like Adobe XD to plan my attack.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Here is the main source of inspiration for this app: <img src="/readme/images/react-weather-app-inspiration.png" width="200">
 
-### `npm test`
+Here is a link to view the design files within Figma: [Weather App Design Files](https://www.figma.com/file/dvRHdts47bJxhQGEIClsGz/React-Weather-App)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+<img src="/readme/images/react-weather-app-screenshot.png" width="200">
+<img src="/readme/images/react-weather-app-screenshot-2.png" width="200">
+<img src="/readme/images/react-weather-app-screenshot-3.png" width="200">
+  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact

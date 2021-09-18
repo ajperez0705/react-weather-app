@@ -22,15 +22,15 @@ The transition from using pure HTML, CSS, and JS, to JSX and React was a little 
 ## Design Work and Inspiration
 Before touching code, I like to make use of a moodboard and design program like Adobe XD to plan my attack.
 
-Here is the main source of inspiration for this app: <img src="/readme/images/react-weather-app-inspiration.png" width="200">
+Here is the main source of inspiration for this app: <img src="/readme-images/react-weather-app-inspiration.png" width="200">
 
 Here is a link to view the design files within Figma: [Weather App Design Files](https://www.figma.com/file/dvRHdts47bJxhQGEIClsGz/React-Weather-App)
 
 ## Features
 
-<img src="/readme/images/react-weather-app-screenshot.png" width="200">
-<img src="/readme/images/react-weather-app-screenshot-2.png" width="200">
-<img src="/readme/images/react-weather-app-screenshot-3.png" width="200">
+<img src="/readme-images/react-weather-app-screenshot.png" width="200">
+<img src="/readme-images/react-weather-app-screenshot-2.png" width="200">
+<img src="/readme-images/react-weather-app-screenshot-3.png" width="200">
   
 
 ## Contact
